@@ -100,17 +100,15 @@ const args = process.argv.slice(2);
 
 if (args.length > 0) {
     const input = args.join(' ');
-    
+    //Braile to English
     if (input.slice(0,6) in BrailleToEnglish) {
-        //console.log("braile to english");
-        //to english
+
         capLock=false;
         numLock=false;
         decLock=false;
         ans=""
         for (let i = 0; i < input.length; i+=6) {
             element = input.slice(i,i+6);
-            //console.log(element);
 
             if(element==EnglishToBraille["cap"]){
                 capLock=true;
@@ -125,7 +123,7 @@ if (args.length > 0) {
             }
 
             if(capLock){
-                //console.log(BrailleToEnglish[element][1]);
+                
                 ans+=BrailleToEnglish[element][1];
                 capLock=false;
             }else if(numLock){
@@ -141,19 +139,19 @@ if (args.length > 0) {
 
 
     } else {
-        //to braile
+        //English to Braile
         
-        //console.log(" english to braile");
+        
         ans=""
         for (let i = 0; i < input.length; i++) {
             
             character=input[i];
-            //console.log(character);
+            
             if(/[A-Z]/.test(character)){
-                //console.log(EnglishToBraille["cap"]);
+                
                 ans+=EnglishToBraille["cap"];
             }else if(/[0-9]/.test(character)){
-                //console.log(EnglishToBraille["num"]);
+                
                 ans+=EnglishToBraille["num"];
             }
             
